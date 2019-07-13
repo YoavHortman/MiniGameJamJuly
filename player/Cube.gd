@@ -42,6 +42,8 @@ func _physics_process(delta):
 	newPos.y = min(max(newPos.y, 50), max_border_y)
 	newPos.x = min(max(newPos.x, 50), max_border_x)
 	
+	var hasKey = false
+	
 	if newPos != lastPos:
 		lastPos = global_position;
 		faceState = $Face.handleInput(up, down, left, right);
@@ -62,7 +64,6 @@ func _ready():
 
 func _on_Node2D_area_entered(area):
 	print("toched spike");
-
 
 func _on_Wall1_area_entered(area):
 	set_global_position(lastPos);
@@ -112,6 +113,8 @@ func _on_TriggerRight_area_exited(area):
 	print("right exit")
 	pass # Replace with function body.
 
+func onKeyPickup():
+	hasKey = true
 
 func _on_TriggerLeft_area_exited(area):
 	leftObject = null
