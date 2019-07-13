@@ -40,3 +40,6 @@ func _ready():
 	max_border_y = get_viewport_rect().size.y - (STEP_SIZE / 2);
 	min_border_y = STEP_SIZE / 2;
 	max_border_x = get_viewport_rect().size.x - (STEP_SIZE / 2);
+
+func _on_Node2D_area_entered(area):
+	print("toched spike");
