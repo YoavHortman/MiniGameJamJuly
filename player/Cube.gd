@@ -33,6 +33,9 @@ func _physics_process(delta):
 		newPos.x = min(newPos.x, max_border_x);
 		newPos.x = max(min_border_x, newPos.x);
 	
+	
+	## Check for border
+
 	set_global_position(newPos);
 
 var max_border_y: int;

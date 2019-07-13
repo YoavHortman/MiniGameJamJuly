@@ -51,6 +51,8 @@ func _ready():
 	
 	pass # Replace with function body.
 
+signal onMovementHappened
+
 func getColorForInt(i):
 	match i:
 		Faces.Red:
@@ -76,7 +78,21 @@ func handleInput(up,down,left,right):
 	if right:
 		doSwitch(Direction.Right)
 		
-	return getFace()
+	var ret = getFace()
+	emit_signal("onMovementHappened")
+	return ret
+	
+func getNextUp():
+	return nextUp
+	
+func getNextDown():
+	return nextDown
+	
+func getNextLeft():
+	return nextLeft
+	
+func getNextRight():
+	return nextRight
 	
 func getFace():
 	return currentFace
