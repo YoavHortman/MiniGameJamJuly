@@ -8,6 +8,11 @@ func _physics_process(delta):
 	var down = Input.is_action_just_pressed("ui_down");
 	var up = Input.is_action_just_pressed("ui_up");
 	var motion = Vector2(0,0);
+	
+	var newState = $Face.handleInput(up, down, left, right);
+
+	$Sprite.modulate = $Face.getColorForInt(newState)
+	
 	if right:
 		motion.x = STEP_SIZE;
 	elif left:
