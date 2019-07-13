@@ -8,12 +8,12 @@ const defines = preload("res://matrix/Defines.gd")
 
 enum Direction { Up, Down, Left, Right }
 
-var currentFace = defines.Faces.Red
-var nextUp = defines.Faces.Blue
-var nextLeft = defines.Faces.Green
-var nextRight = defines.Faces.Pink
-var nextDown = defines.Faces.Black
-var oppsiteSite = defines.Faces.Yellow
+var currentFace = defines.Faces.Smile
+var nextUp = defines.Faces.Jump
+var nextLeft = defines.Faces.Axe
+var nextRight = defines.Faces.Hand
+var nextDown = defines.Faces.Key
+var oppsiteSite = defines.Faces.Shield
 
 func doSwitch(dir):
 	match dir:
@@ -52,17 +52,17 @@ signal onMovementHappened
 
 func getColorForInt(i):
 	match i:
-		defines.Faces.Red:
+		defines.Faces.Jump:
 			return Color.red
-		defines.Faces.Blue:
+		defines.Faces.Smile:
 			return Color.blue
-		defines.Faces.Green:
+		defines.Faces.Shield:
 			return Color.green
-		defines.Faces.Yellow:
+		defines.Faces.Axe:
 			return Color.yellow
-		defines.Faces.Pink:
+		defines.Faces.Hand:
 			return Color.pink
-		defines.Faces.Black:
+		defines.Faces.Key:
 			return Color.black
 
 func handleInput(up,down,left,right):

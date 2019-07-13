@@ -1,7 +1,9 @@
 extends Area2D
 
 func _on_Key_area_entered(area):
-	get_parent().queue_free();
+	print("pickup")
+
+var picked = false
 	
 func canEnter(state):
 	return true;
