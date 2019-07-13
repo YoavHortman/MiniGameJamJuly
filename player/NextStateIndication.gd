@@ -15,8 +15,8 @@ func _ready():
 
 func _on_Face_onMovementHappened():
 	var face = get_node("../Face")
-	$Up.modulate = face.getColorForInt(face.getNextUp())
-	$Down.modulate = face.getColorForInt(face.getNextDown())
-	$Left.modulate = face.getColorForInt(face.getNextLeft())
-	$Right.modulate = face.getColorForInt(face.getNextRight())
+	$Up.animation = face.getAnimationForState(face.getNextUp())
+	$Down.animation = face.getAnimationForState(face.getNextDown())
+	$Left.animation = face.getAnimationForState(face.getNextLeft())
+	$Right.animation = face.getAnimationForState(face.getNextRight())
 	pass # Replace with function body.

@@ -50,20 +50,20 @@ func _ready():
 
 signal onMovementHappened
 
-func getColorForInt(i):
+func getAnimationForState(i):
 	match i:
 		defines.Faces.Jump:
-			return Color.red
+			return "Jump"
 		defines.Faces.Smile:
-			return Color.blue
+			return "Smile"
 		defines.Faces.Shield:
-			return Color.green
+			return "Shield"
 		defines.Faces.Axe:
-			return Color.yellow
+			return "Axe"
 		defines.Faces.Hand:
-			return Color.pink
+			return "Hand"
 		defines.Faces.Key:
-			return Color.black
+			return "Key"
 
 func handleInput(up,down,left,right):
 	if up:

@@ -48,7 +48,7 @@ func _physics_process(delta):
 		lastPos = global_position;
 		faceState = $Face.handleInput(up, down, left, right);
 	
-		$Sprite.modulate = $Face.getColorForInt(faceState)
+		$Sprite.animation = $Face.getAnimationForState(faceState)
 		
 		set_global_position(newPos);
 
