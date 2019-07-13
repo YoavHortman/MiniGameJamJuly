@@ -1,6 +1,8 @@
 extends Area2D
 
 const STEP_SIZE = 100;
+var jumpfac = 1
+
 var lastPos = Vector2();
 var faceState;
 func _physics_process(delta):
@@ -35,9 +37,10 @@ func _physics_process(delta):
 	# check surroundings
 	
 	
-	var newPos = get_global_position() + motion;
+	var newPos = get_global_position() + motion * jumpfac;
+	jumpfac = 1
 	
-	newPos.y = min(max(newPos.y, 50), max_border_y)
+	newPos.y = min(max(newPos.y, 0), max_border_y)
 	newPos.x = min(max(newPos.x, 50), max_border_x)
 	
 	if newPos != lastPos:
@@ -56,6 +59,9 @@ var min_border_y;
 
 var hasKey = false
 
+func jump():
+	jumpfac = 2
+
 func onKeyPickup():
 	hasKey = true
 	
@@ -63,14 +69,8 @@ func hasKey():
 	return hasKey
 
 func _ready():
-	max_border_y = 550;
+	max_border_y = 950;
 	max_border_x = 950;
-
-func _on_Node2D_area_entered(area):
-	print("toched spike");
-
-func _on_Wall1_area_entered(area):
-	set_global_position(lastPos);
 
 var rightObject
 var leftObject

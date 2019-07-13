@@ -3,7 +3,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 49, 49 )
+extents = Vector2( 50, 50 )
 
 [node name="Wall" type="Area2D"]
 
