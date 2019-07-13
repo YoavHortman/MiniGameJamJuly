@@ -4,19 +4,16 @@ extends Node
 #   Blue
 #Gr Yellow Pink   
 #   Black
-var reference = Vector3(0, 0, 0)
-enum Faces { Red, Blue, Green, Yellow, Pink, Black, None }
-enum Orientation { North, East, South, West }
+const defines = preload("res://matrix/Defines.gd")
+
 enum Direction { Up, Down, Left, Right }
 
-var currentFace = Faces.Red
-var nextUp = Faces.Blue
-var nextLeft = Faces.Green
-var nextRight = Faces.Pink
-var nextDown = Faces.Black
-var oppsiteSite = Faces.Yellow
-var orientation = Orientation.North
-
+var currentFace = defines.Faces.Red
+var nextUp = defines.Faces.Blue
+var nextLeft = defines.Faces.Green
+var nextRight = defines.Faces.Pink
+var nextDown = defines.Faces.Black
+var oppsiteSite = defines.Faces.Yellow
 
 func doSwitch(dir):
 	match dir:
@@ -55,17 +52,17 @@ signal onMovementHappened
 
 func getColorForInt(i):
 	match i:
-		Faces.Red:
+		defines.Faces.Red:
 			return Color.red
-		Faces.Blue:
+		defines.Faces.Blue:
 			return Color.blue
-		Faces.Green:
+		defines.Faces.Green:
 			return Color.green
-		Faces.Yellow:
+		defines.Faces.Yellow:
 			return Color.yellow
-		Faces.Pink:
+		defines.Faces.Pink:
 			return Color.pink
-		Faces.Black:
+		defines.Faces.Black:
 			return Color.black
 
 func handleInput(up,down,left,right):
