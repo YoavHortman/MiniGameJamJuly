@@ -1,3 +1,23 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Cube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/gridBackground.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2( 0.999227, 0.997127 )
+
+[node name="Cube" parent="." instance=ExtResource( 1 )]
+position = Vector2( 50, 50 )
+scale = Vector2( 1, 1 )
+z_index = 1
+z_as_relative = false
+
+[node name="gridBackground" type="Sprite" parent="."]
+position = Vector2( 500, 500 )
+scale = Vector2( 2.00155, 2.00576 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 1, 1 )
+anchor_mode = 0
+current = true

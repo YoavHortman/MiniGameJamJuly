@@ -16,8 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://player/Cube.tscn"
+run/main_scene="res://matrix/matrix.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1000
+window/size/height=1000
+window/size/resizable=false
 
 [input]
 
