@@ -1,17 +1,14 @@
 extends Area2D
 
 const STEP_SIZE = 100;
-
+var lastPos = Vector2();
+var faceState;
 func _physics_process(delta):
 	var right = Input.is_action_just_pressed("ui_right");
 	var left =  Input.is_action_just_pressed("ui_left");
 	var down = Input.is_action_just_pressed("ui_down");
 	var up = Input.is_action_just_pressed("ui_up");
 	var motion = Vector2(0,0);
-	
-	var newState = $Face.handleInput(up, down, left, right);
-
-	$Sprite.modulate = $Face.getColorForInt(newState)
 	
 	if right:
 		motion.x = STEP_SIZE;
@@ -33,7 +30,15 @@ func _physics_process(delta):
 		newPos.x = min(newPos.x, max_border_x);
 		newPos.x = max(min_border_x, newPos.x);
 	
-	set_global_position(newPos);
+	print("new", newPos);
+	print("last", lastPos);
+	if round(newPos.x) != round(lastPos.x) or round(newPos.y) != round(lastPos.y):	
+		lastPos = global_position;
+		faceState = $Face.handleInput(up, down, left, right);
+	
+		$Sprite.modulate = $Face.getColorForInt(faceState)
+		
+		set_global_position(newPos);
 
 var max_border_y: int;
 var max_border_x: int;
@@ -48,3 +53,7 @@ func _ready():
 
 func _on_Node2D_area_entered(area):
 	print("toched spike");
+
+
+func _on_Wall1_area_entered(area):
+	set_global_position(lastPos);
