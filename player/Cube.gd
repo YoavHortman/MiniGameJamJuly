@@ -12,7 +12,6 @@ func _physics_process(delta):
 	
 	if right:
 		if rightObject != null:
-			print(rightObject)
 			if !rightObject.canEnter($Face.getFace()):
 				return
 				
@@ -33,7 +32,6 @@ func _physics_process(delta):
 				return
 		motion.y = -STEP_SIZE;
 	
-	print("Moving")
 	# check surroundings
 	
 	
@@ -41,8 +39,6 @@ func _physics_process(delta):
 	
 	newPos.y = min(max(newPos.y, 50), max_border_y)
 	newPos.x = min(max(newPos.x, 50), max_border_x)
-	
-	var hasKey = false
 	
 	if newPos != lastPos:
 		lastPos = global_position;
