@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Cube.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/gridBackground.png" type="Texture" id=2]
 [ext_resource path="res://obstacles/spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obstacles/wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://matrix/Defines.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2( 0.999227, 0.997127 )
@@ -23,4 +25,14 @@ current = true
 
 [node name="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 550, 350 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 452.373, 551.666 )
+
+[node name="Wall" parent="Node2D2" instance=ExtResource( 4 )]
+position = Vector2( -201.674, -401.853 )
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 5 )
 [connection signal="area_entered" from="Node2D" to="Cube" method="_on_Node2D_area_entered"]
