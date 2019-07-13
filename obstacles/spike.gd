@@ -14,7 +14,14 @@ func canEnter(state):
 	print("Checking Spike")
 	print("Got state:", state)
 	#check if face is correct
-	return state == defines.Faces.Red
+	
+	var gameover = state != defines.Faces.Red
+	
+	if gameover:
+		get_tree().change_scene("res://GameOver/GameOver.tscn")
+		return false
+			
+	return true
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
