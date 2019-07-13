@@ -18,7 +18,6 @@ extents = Vector2( 49, 49 )
 [sub_resource type="RectangleShape2D" id=5]
 
 [node name="Cube" type="Area2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
@@ -62,5 +61,6 @@ shape = SubResource( 5 )
 [connection signal="area_entered" from="TriggerLeft" to="." method="_on_TriggerLeft_area_entered"]
 [connection signal="area_exited" from="TriggerLeft" to="." method="_on_TriggerLeft_area_exited"]
 [connection signal="area_entered" from="TriggerUp" to="." method="_on_TriggerUp_area_entered"]
+[connection signal="area_exited" from="TriggerUp" to="." method="_on_TriggerUp_area_exited"]
 [connection signal="area_entered" from="TriggerDown" to="." method="_on_TriggerDown_area_entered"]
 [connection signal="area_exited" from="TriggerDown" to="." method="_on_TriggerDown_area_exited"]

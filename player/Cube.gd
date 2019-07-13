@@ -54,6 +54,14 @@ var max_border_x: int;
 const min_border_x = STEP_SIZE / 2;
 var min_border_y;
 
+var hasKey = false
+
+func onKeyPickup():
+	hasKey = true
+	
+func hasKey():
+	return hasKey
+
 func _ready():
 	max_border_y = 550;
 	max_border_x = 950;
@@ -108,11 +116,6 @@ func _on_TriggerRight_area_exited(area):
 	rightObject = null
 	print("right exit")
 	pass # Replace with function body.
-
-var hasKey = false
-
-func onKeyPickup():
-	hasKey = true
 
 func _on_TriggerLeft_area_exited(area):
 	leftObject = null
