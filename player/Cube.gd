@@ -43,7 +43,8 @@ func _physics_process(delta):
 	newPos.y = min(max(newPos.y, 0), max_border_y)
 	newPos.x = min(max(newPos.x, 50), max_border_x)
 	
-	if newPos != lastPos:
+	if round(newPos.y) != round(lastPos.y) or round(newPos.x) != round(lastPos.x):
+		$AudioStreamPlayer2D.play();
 		lastPos = global_position;
 		faceState = $Face.handleInput(up, down, left, right);
 	
