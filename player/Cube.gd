@@ -32,7 +32,6 @@ func _physics_process(delta):
 			if !upObject.canEnter($Face.getFace()):
 				return
 		motion.y = -STEP_SIZE;
-
 	
 	print("Moving")
 	# check surroundings
@@ -50,9 +49,6 @@ func _physics_process(delta):
 		$Sprite.modulate = $Face.getColorForInt(faceState)
 		
 		set_global_position(newPos);
-	else:
-		print("old: ", lastPos, " new: ", newPos)
-		print("did not move")
 
 var max_border_y: int;
 var max_border_x: int;

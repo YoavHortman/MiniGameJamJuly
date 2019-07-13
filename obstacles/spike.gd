@@ -15,6 +15,7 @@ func canEnter(state):
 	print("Got state:", state)
 	#check if face is correct
 	return state == defines.Faces.Red
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
