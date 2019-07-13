@@ -113,6 +113,8 @@ func _on_TriggerRight_area_exited(area):
 	print("right exit")
 	pass # Replace with function body.
 
+var hasKey = false
+
 func onKeyPickup():
 	hasKey = true
 
