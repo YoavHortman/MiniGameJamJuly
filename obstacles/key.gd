@@ -1,8 +1,7 @@
 extends Area2D
 
-func canEnter(state):
+
+func _on_Key_area_entered(area):
 	if visible:
-		var player = get_node("../Cube")
-		player.onKeyPickup()
 		visible = false
 	return true;

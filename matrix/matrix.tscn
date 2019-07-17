@@ -1,21 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/Cube.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/gridBackground.png" type="Texture" id=2]
-[ext_resource path="res://obstacles/spike.tscn" type="PackedScene" id=3]
-[ext_resource path="res://obstacles/spike.gd" type="Script" id=4]
-[ext_resource path="res://obstacles/wall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://obstacles/wall.gd" type="Script" id=6]
-[ext_resource path="res://music_loop.ogg" type="AudioStream" id=7]
-[ext_resource path="res://obstacles/Door.tscn" type="PackedScene" id=8]
-[ext_resource path="res://obstacles/key.tscn" type="PackedScene" id=9]
+[ext_resource path="res://music_loop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://obstacles/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obstacles/key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obstacles/wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obstacles/spike.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -2.19226, -50 )
-scale = Vector2( 0.999227, 0.997127 )
 
 [node name="Cube" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50.0387, 651.873 )
+position = Vector2( 50, 650 )
 z_index = 1
 z_as_relative = false
 
@@ -23,133 +19,138 @@ z_as_relative = false
 position = Vector2( 500, 500 )
 scale = Vector2( 2.00155, 2.00576 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
 
-[node name="Spike1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 250.193, 250.72 )
-script = ExtResource( 4 )
-
-[node name="Spike5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 350.271, 150.432 )
-script = ExtResource( 4 )
-
-[node name="Spike6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 450.348, 150.432 )
-script = ExtResource( 4 )
-
-[node name="Spike2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 450.348, 651.873 )
-script = ExtResource( 4 )
-
-[node name="Spike3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 350.271, 551.873 )
-script = ExtResource( 4 )
-
-[node name="Spike4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 250.193, 451.297 )
-script = ExtResource( 4 )
-
-[node name="Wall1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50.0387, 751.873 )
-script = ExtResource( 6 )
-
-[node name="Wall9" parent="." instance=ExtResource( 5 )]
-position = Vector2( 350.271, 752.161 )
-script = ExtResource( 6 )
-
-[node name="Wall15" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 551.585 )
-script = ExtResource( 6 )
-
-[node name="Wall19" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 451.297 )
-script = ExtResource( 6 )
-
-[node name="Wall20" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 351.008 )
-script = ExtResource( 6 )
-
-[node name="Wall21" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 250.72 )
-script = ExtResource( 6 )
-
-[node name="Wall22" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 150.432 )
-script = ExtResource( 6 )
-
-[node name="Wall23" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 50.1441 )
-script = ExtResource( 6 )
-
-[node name="Wall16" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 651.873 )
-script = ExtResource( 6 )
-
-[node name="Wall17" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 752.161 )
-script = ExtResource( 6 )
-
-[node name="Wall18" parent="." instance=ExtResource( 5 )]
-position = Vector2( 550.425, 852.449 )
-script = ExtResource( 6 )
-
-[node name="Wall12" parent="." instance=ExtResource( 5 )]
-position = Vector2( 350.271, 852.449 )
-script = ExtResource( 6 )
-
-[node name="Wall10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 250.193, 751.873 )
-script = ExtResource( 6 )
-
-[node name="Wall11" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150.116, 752.161 )
-script = ExtResource( 6 )
-
-[node name="Wall2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150.116, 50.1441 )
-script = ExtResource( 6 )
-
-[node name="Wall3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150.116, 150.432 )
-script = ExtResource( 6 )
-
-[node name="Wall4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150.116, 250.72 )
-script = ExtResource( 6 )
-
-[node name="Wall5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50.0387, 250.72 )
-script = ExtResource( 6 )
-
-[node name="Wall6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50.0387, 351.008 )
-script = ExtResource( 6 )
-
-[node name="Wall7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50.0387, 451.297 )
-script = ExtResource( 6 )
-
-[node name="Wall8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50.0387, 551.873 )
-script = ExtResource( 6 )
-
-[node name="Wall13" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150.116, 551.585 )
-script = ExtResource( 6 )
-
-[node name="Wall14" parent="." instance=ExtResource( 5 )]
-position = Vector2( 350.271, 351.008 )
-script = ExtResource( 6 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 autoplay = true
 
-[node name="Door" parent="." instance=ExtResource( 8 )]
+[node name="Door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 450, 950 )
 
-[node name="Key" parent="." instance=ExtResource( 9 )]
-position = Vector2( 450.348, 50.1441 )
+[node name="Key" parent="." instance=ExtResource( 5 )]
+position = Vector2( 450, 50 )
+
+[node name="Wall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 50, 550 )
+
+[node name="Wall22" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 550 )
+
+[node name="Wall23" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350, 350 )
+
+[node name="Wall2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 50, 450 )
+
+[node name="Wall3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 50, 350 )
+
+[node name="Wall4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 50, 250 )
+
+[node name="Wall5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 250 )
+
+[node name="Wall6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 150 )
+
+[node name="Wall7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 50 )
+
+[node name="Wall8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 50, 750 )
+
+[node name="Wall9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 750 )
+
+[node name="Wall10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 250, 750 )
+
+[node name="Wall11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350, 750 )
+
+[node name="Wall12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350, 850 )
+
+[node name="Wall13" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 850 )
+
+[node name="Wall14" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 750 )
+
+[node name="Wall15" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 650 )
+
+[node name="Wall16" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 550 )
+
+[node name="Wall17" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 450 )
+
+[node name="Wall18" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 350 )
+
+[node name="Wall19" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 250 )
+
+[node name="Wall20" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 150 )
+
+[node name="Wall21" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 50 )
+
+[node name="Spike" parent="." instance=ExtResource( 7 )]
+position = Vector2( 250, 450 )
+
+[node name="Spike2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 350, 550 )
+
+[node name="Spike3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 450, 650 )
+
+[node name="Spike4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 250, 250 )
+
+[node name="Spike5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 350, 150 )
+
+[node name="Spike6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 450, 150 )
+[connection signal="area_entered" from="Door" to="Cube" method="_on_Door_area_entered"]
+[connection signal="area_entered" from="Key" to="Cube" method="_on_Key_area_entered"]
+[connection signal="area_entered" from="Wall" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall22" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall23" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall2" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall3" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall4" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall5" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall6" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall7" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall8" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall9" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall10" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall11" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall12" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall13" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall14" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall15" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall16" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall17" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall18" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall19" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall20" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Wall21" to="Cube" method="_on_Wall_area_entered"]
+[connection signal="area_entered" from="Spike" to="Cube" method="_on_Spike_area_entered"]
+[connection signal="area_entered" from="Spike2" to="Cube" method="_on_Spike_area_entered"]
+[connection signal="area_entered" from="Spike3" to="Cube" method="_on_Spike_area_entered"]
+[connection signal="area_entered" from="Spike4" to="Cube" method="_on_Spike_area_entered"]
+[connection signal="area_entered" from="Spike5" to="Cube" method="_on_Spike_area_entered"]
+[connection signal="area_entered" from="Spike6" to="Cube" method="_on_Spike_area_entered"]

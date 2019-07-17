@@ -1,124 +1,79 @@
 extends Area2D
-
-const STEP_SIZE = 100;
-var jumpfac = 1
-
-var lastPos = Vector2();
-var faceState;
-func _physics_process(delta):
-	var right = Input.is_action_just_pressed("ui_right");
-	var left =  Input.is_action_just_pressed("ui_left");
-	var down = Input.is_action_just_pressed("ui_down");
-	var up = Input.is_action_just_pressed("ui_up");
-	var motion = Vector2(0,0);
-	
-	if right:
-		if rightObject != null:
-			if !rightObject.canEnter($Face.getFace()):
-				return
-				
-		motion.x = STEP_SIZE;
-	elif left:
-		if leftObject != null:
-			if !leftObject.canEnter($Face.getFace()):
-				return
-		motion.x = -STEP_SIZE;
-	elif down:
-		if downObject != null:
-			if !downObject.canEnter($Face.getFace()):
-				return
-		motion.y = STEP_SIZE;
-	elif up:
-		if upObject != null:
-			if !upObject.canEnter($Face.getFace()):
-				return
-		motion.y = -STEP_SIZE;
-	
-	# check surroundings
-	
-	
-	var newPos = get_global_position() + motion * jumpfac;
-	jumpfac = 1
-	
-	newPos.y = min(max(newPos.y, 0), max_border_y)
-	newPos.x = min(max(newPos.x, 50), max_border_x)
-	
-	if round(newPos.y) != round(lastPos.y) or round(newPos.x) != round(lastPos.x):
-		$AudioStreamPlayer2D.play();
-		lastPos = global_position;
-		faceState = $Face.handleInput(up, down, left, right);
-	
-		$Sprite.animation = $Face.getAnimationForState(faceState)
-		
-		set_global_position(newPos);
-
-var max_border_y: int;
-var max_border_x: int;
-
-const min_border_x = STEP_SIZE / 2;
-var min_border_y;
-
-var hasKey = false
-
-func jump():
-	jumpfac = 2
-
-func onKeyPickup():
-	hasKey = true
-	
-func hasKey():
-	return hasKey
-
+var speed = 256 # big number because it's multiplied by delta
+var tile_size = 100 # size in pixels of tiles on the grid
+var last_position = Vector2() # last idle position
+var target_position = Vector2() # desired position to move towards
+var last_move := Vector2();
+var movedir = Vector2() # move direction
+var shouldContinueMovement = true;
+var lastFace;
+var LEFT := false;
+var RIGHT := false;
+var UP:= false;
+var DOWN := false;
+const defines = preload("res://matrix/Defines.gd")
 func _ready():
-	max_border_y = 950;
-	max_border_x = 950;
+	last_position = position
+	target_position = position
+	lastFace = $Face.currentFace;
+	$Sprite.animation = $Face.getAnimationForState(lastFace);
+func _process(delta):
+	# MOVEMENT
+	if !shouldContinueMovement:
+		position = last_position
+		target_position = last_position
+		shouldContinueMovement = true;
+	else:
+		position += speed * movedir * delta
+		
+	if position.distance_to(last_position) >= tile_size: # if we've moved further than one space
+		position = target_position # snap the player to the intended position
+		var face = $Face.handleInput(UP, DOWN, LEFT, RIGHT);
+		$Sprite.animation = $Face.getAnimationForState(face);
+	
+	# IDLE
+	if position == target_position:
+		get_movedir();
+		last_move = movedir * tile_size;
+		last_position = position # record the player's current idle position
+		target_position += last_move # if key is pressed, get new target (also shifts to moving state)
+	
+	
+# GET DIRECTION THE PLAYER WANTS TO MOVE
+func get_movedir():
+	LEFT = Input.is_action_just_pressed("ui_left")
+	RIGHT = Input.is_action_just_pressed("ui_right")
+	UP = Input.is_action_just_pressed("ui_up")
+	DOWN = Input.is_action_just_pressed("ui_down")
+	
+	movedir.x = -int(LEFT) + int(RIGHT) # if pressing both directions this will return 0
+	movedir.y = -int(UP) + int(DOWN)
+	
+	
+	if movedir.x != 0 && movedir.y != 0: # prevent diagonals
+		movedir = Vector2.ZERO
+	elif movedir.x != 0 || movedir.y != 0:
+		$AudioStreamPlayer2D.play();
+		lastFace = $Face.getFace();
+		
+func _on_Wall_area_entered(area):
+	shouldContinueMovement = false;
 
-var rightObject
-var leftObject
-var upObject
-var downObject
 
-func _on_TriggerRight_area_entered(area):
-	rightObject = area
-	print("right Enter")
-	pass # Replace with function body.
+func _on_Spike_area_entered(area):
+	if lastFace == defines.Faces.Jump:
+		target_position += last_move;
+		last_position += last_move;
+	else:
+		get_tree().change_scene("res://GameOver/GameOver.tscn");
 
-func _on_TriggerUp_area_entered(area):
-	upObject = area
-	print("up Enter")
-	pass # Replace with function body.
+var has_key = false;
+func _on_Key_area_entered(area):
+	has_key = true;
 
 
-func _on_TriggerDown_area_entered(area):
-	downObject = area
-	print("down Enter")
-	pass # Replace with function body.
-
-
-func _on_TriggerLeft_area_entered(area):
-	leftObject = area
-	print("left Enter")
-	pass # Replace with function body.
-
-
-func _on_TriggerUp_area_exited(area):
-	upObject = null
-	print("up exit")
-	pass # Replace with function body.
-
-
-func _on_TriggerDown_area_exited(area):
-	downObject = null
-	print("down exit")
-	pass # Replace with function body.
-
-
-func _on_TriggerRight_area_exited(area):
-	rightObject = null
-	print("right exit")
-	pass # Replace with function body.
-
-func _on_TriggerLeft_area_exited(area):
-	leftObject = null
-	print("left exit")
-	pass # Replace with function body.
+func _on_Door_area_entered(area):
+	if has_key && lastFace == defines.Faces.Key:
+		get_tree().change_scene("res://GameOver/GameOver.tscn");
+	else:
+		shouldContinueMovement = false;
